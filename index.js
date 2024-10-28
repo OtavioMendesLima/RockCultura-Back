@@ -1,14 +1,13 @@
 const express = require('express');
-const app = express();
-const authRoutes = require('./src/routes/authRoutes')
-const productRoutes = require('./src/routes/productRoutes');
-const cartRoutes = require('./src/routes/cartRoutes');
+const cors = require('cors');
+const userRoutes = require('./routes/userRoutes'); // Ajuste o caminho se necessário
 
+const app = express();
+app.use(cors());
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/cart', cartRoutes);
+// Montando a rota /api para userRoutes
+app.use('/api', userRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
